@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
 
-if os.getenv("FOO") == "True":
+if os.getenv("CONTAINER") == "True":
     SQLALCHEMY_DATABASE_URL = \
         'postgresql://postgres:test123@host.docker.internal/TodoApplicationDatabase'
 else:
