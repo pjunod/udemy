@@ -1,8 +1,15 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-SQLALCHEMY_DATABASE_URL = 'postgresql://postgres:junod1983@localhost/TodoApplicationDatabase'
+
+if os.getenv("FOO") == "True":
+    SQLALCHEMY_DATABASE_URL = \
+        'postgresql://postgres:test123@host.docker.internal/TodoApplicationDatabase'
+else:
+    SQLALCHEMY_DATABASE_URL = \
+        'postgresql://postgres:test123@localhost/TodoApplicationDatabase'
 
 # Postgres
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
