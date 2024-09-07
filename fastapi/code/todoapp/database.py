@@ -3,13 +3,16 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-
-if os.getenv("CONTAINER") == "True":
-    SQLALCHEMY_DATABASE_URL = \
-        'postgresql://postgres:test123@host.docker.internal/TodoApplicationDatabase'
+if os.getenv("DB") == "POSTGRES":
+    if os.getenv("CONTAINER") == "True":
+        SQLALCHEMY_DATABASE_URL = \
+            'postgresql://postgres:test123@host.docker.internal/TodoApplicationDatabase'
+    else:
+        SQLALCHEMY_DATABASE_URL = \
+            'postgresql://postgres:test123@localhost/TodoApplicationDatabase'
 else:
-    SQLALCHEMY_DATABASE_URL = \
-        'postgresql://postgres:test123@localhost/TodoApplicationDatabase'
+    SQLALCHEMY_DATABASE_URL = 'sqlite:///./todosapp.db'
+
 
 # Postgres
 engine = create_engine(SQLALCHEMY_DATABASE_URL)

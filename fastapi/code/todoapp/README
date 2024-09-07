@@ -2,7 +2,12 @@
 ## docker build -t fastapi-todo .
 
 ## Docker run
-## docker run --add-host=host.docker.internal:host-gateway fastapi-todo
+## docker run -p 8000:8000 --add-host=host.docker.internal:host-gateway fastapi-todo
 
 ## Default port: 8000
 ## Postgres on host-gateway:5432
+
+
+## BACKEND ## (Default: SQLITE3)
+# If using postgres, set env var DB=POSTGRES or run using following command:
+# docker run -p 8000:8000 --env-file=.env_postgres --add-host=host.docker.internal:host-gateway fastapi-todo
