@@ -28,6 +28,7 @@ class CreateUserRequest(BaseModel):
     username: str
     password: str
     role: str
+    phone_number: str
 
 class Token(BaseModel):
     access_token: str
