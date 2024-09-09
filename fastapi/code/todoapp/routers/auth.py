@@ -2,8 +2,8 @@ from datetime import datetime, timedelta, timezone
 from typing import Annotated
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
-from models import Users
-from database import SessionLocal
+from ..models import Users
+from ..database import SessionLocal
 from passlib.context import CryptContext
 from starlette import status
 from jose import JWTError, jwt

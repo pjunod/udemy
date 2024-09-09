@@ -1,9 +1,9 @@
 from typing import Annotated
 from sqlalchemy.orm import Session
-from routers.auth import get_current_user
+from .auth import get_current_user
 from starlette import status
-from database import SessionLocal
-from models import Users
+from ..database import SessionLocal
+from ..models import Users
 from pydantic import BaseModel, Field
 from passlib.context import CryptContext
 from fastapi import APIRouter, Depends, HTTPException
