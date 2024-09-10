@@ -1,12 +1,12 @@
 from sqlalchemy import create_engine, text
 from sqlalchemy.pool import StaticPool
 from sqlalchemy.orm import sessionmaker
-from ..database import Base
-from ..main import app
+from todoapp.database import Base
+from todoapp.main import app
 from fastapi.testclient import TestClient
 import pytest
-from ..models import Todos, Users
-from ..routers.auth import bcrypt_context
+from todoapp.models import Todos, Users
+from todoapp.routers.auth import bcrypt_context
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///./testdb.db"
 
@@ -28,7 +28,7 @@ def override_get_db():
         db.close()
 
 def override_get_current_user():
-    return {'username': 'codingwithrobytest', 'id': 1, 'user_role': 'admin'}
+    return {'username': 'pjunod', 'id': 1, 'user_role': 'admin'}
 
 client = TestClient(app)
 

@@ -1,5 +1,5 @@
-from .utils import *
-from ..routers.users import get_db, get_current_user
+from test.utils import *
+from todoapp.routers.users import get_db, get_current_user
 from fastapi import status
 
 app.dependency_overrides[get_db] = override_get_db
@@ -32,9 +32,3 @@ def test_change_password_invalid_current_password(test_user):
 def test_change_phone_number_success(test_user):
     response = client.put("/user/phonenumber/2222222222")
     assert response.status_code == status.HTTP_204_NO_CONTENT
-
-
-
-
-
-
